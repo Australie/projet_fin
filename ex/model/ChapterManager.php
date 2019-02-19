@@ -1,13 +1,15 @@
 <?php
-require_once("model/Manager.php");
- 
+namespace EG\model;
+
+use EG\model\Manager;
+
 class ChapterManager extends Manager
 {
     public function getChapters()
     {
         $db = $this->dbConnect();
         $chapters = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date FROM chapter ORDER BY creation_date DESC');
-        
+
         return $chapters;
     }
     public function getChapter($id)
@@ -15,8 +17,8 @@ class ChapterManager extends Manager
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date FROM chapter WHERE id = ? ');
         $req->execute(array($id));
-        $chapter = $req->fetch(); 
-        
+        $chapter = $req->fetch();
+
         $req->closeCursor();
 
         return $chapter;
@@ -29,6 +31,6 @@ class ChapterManager extends Manager
         $affectedLines = $chapters->execute(array($Id, $author, $comment));
 
         return $affectedLines;
-        
-      }
+
+    }
 }
