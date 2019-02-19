@@ -1,5 +1,5 @@
-<?php $title = 'book'; ?>
-<?php  ob_start(); ?>
+<?php $title = 'book';?>
+<?php ob_start();?>
 
 <form action="index.php?action=addInscription" method="post">
     <div>
@@ -14,6 +14,6 @@
     <input type="submit" value="valider" />
     </div>
 
-    
-    <?php $content = ob_get_clean(); ?>
-<?php require('view/template.php'); ?>
+
+    <?php $content = ob_get_clean();?>
+<?php require 'view/template.php';?>

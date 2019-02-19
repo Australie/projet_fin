@@ -1,7 +1,7 @@
-<?php $title = 'book'; ?>
-<?php  ob_start(); ?>
+<?php $title = 'book';?>
+<?php ob_start();?>
 
-<form action="index.php?action=postView.php" method="post">
+<form action="index.php?action=verifconexion" method="post">
     <div>
         <label for="pseudo"> votre pseudo</label><br />
         <input type="text" id="pseudo" name="pseudo" />
@@ -14,6 +14,6 @@
         <input type="submit" />
     </div>
 
-    
-    <?php $content = ob_get_clean(); ?>
-<?php require('view/template.php'); ?>
+
+    <?php $content = ob_get_clean();?>
+<?php require 'view/template.php';?>

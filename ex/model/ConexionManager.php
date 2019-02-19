@@ -1,6 +1,8 @@
 <?php
-require_once("model/Manager.php");
- 
+namespace EG\model;
+
+use EG\model\Manager;
+
 class ConexionManager extends Manager
 {
 
@@ -16,7 +18,7 @@ class ConexionManager extends Manager
         return $member;
     }
 
-    public function getMembers() 
+    public function getMembers()
     {
         $db = $this->dbConnect();
         $members = $db->prepare('SELECT pseudo, password FROM member');
