@@ -1,5 +1,5 @@
 <?php
-namespace EG\controller; 
+namespace EG\controller;
 
 use EG\controller\Controller;
 
@@ -43,12 +43,10 @@ class App
                         throw new Exception('tous les champs ne sont pas remplis !');
                     }
 
-
                 } elseif ($_GET['action'] == 'conexion') {
                     $this->controller->connect();
-                  
-                }
-                elseif ($_GET['action'] == 'verifconexion') {
+
+                } elseif ($_GET['action'] == 'verifconexion') {
                     if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
                         $this->controller->verif($_POST['pseudo'], $_POST['password']);
                     } else { // Autre exception
