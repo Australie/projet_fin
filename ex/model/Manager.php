@@ -1,8 +1,8 @@
 <?php
 
-namespace EG\model; 
+namespace EG\model;
 
-use\PDO;
+use \PDO;
 
 class Manager
 {

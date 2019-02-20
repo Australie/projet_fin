@@ -10,7 +10,7 @@ class MemberManager extends Manager
     {
         $db = $this->dbConnect();
         $verif = $db->prepare('SELECT * FROM member WHERE pseudo=(:nom)');
-        $verif->execute(array( "nom" => $pseudo ));
+        $verif->execute(array("nom" => $pseudo));
 
         return $verif->fetch();
     }

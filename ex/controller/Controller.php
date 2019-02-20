@@ -1,8 +1,8 @@
 <?php
 namespace EG\controller;
 
-use EG\model\CommentManager;
 use EG\model\ChapterManager;
+use EG\model\CommentManager;
 use EG\model\InscriptManager;
 use EG\model\MemberManager;
 
@@ -63,7 +63,6 @@ class controller
         } else {
             header('Location: index.php?action=conexion');
         }
-        //TODO appelle de model et une autre dirige ver la vue
     }
 
     public function connect()
@@ -80,7 +79,6 @@ class controller
 
             $_SESSION['pseudo'] = $pseudo;
 
-          
             header('Location: index.php');
         } else {
             throw new Exception('authentification impossible');

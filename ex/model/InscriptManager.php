@@ -19,10 +19,9 @@ class InscriptManager extends Manager
             $PassHash,
         ));
 
-
         $req->closeCursor();
 
         return $req;
     }
-    
+
 }
