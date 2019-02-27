@@ -9,8 +9,10 @@ class LivreManager extends Manager
    public function getLivres()
     {
         $db = $this->dbConnect();
-        $Livres =  $db->prepare('SELECT * FROM livre ');
-    
+        $Livres =  $db->query('SELECT * FROM livre 
+        INNER JOIN membre ON livre.id_membre = membre.id 
+        INNER JOIN genre ON livre.id_genre = genre.id ');
+        
         return $Livres;
     }
 }

@@ -1,37 +1,9 @@
 <?php $title = 'Premier page';?>
 
 <?php ob_start();?>
-
-
-
-
-<nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand navbar-link" href="index.php"><img src="img/3.jpg" alt="" height="45em" width="300em"/></a>
-          <button
-            class="navbar-toggle collapsed"
-            data-toggle="collapse"
-            data-target="#navcol-2"
-          >
-            <span class="sr-only">Toggle navigation</span
-            ><span class="icon-bar"></span><span class="icon-bar"></span
-            ><span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" id="navcol-2">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active" role="presentation">
-              <a href="#"><img src="img/oFHyYSG.jpg" alt="exemple"height="40px" width="40px"/></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
     <div class="col-sm-3 col-md-3 col-lg-3">
       <ul class="nav nav-pills nav-stacked">
-        <li class="active , taille"><a href="#">Acceuil</a></li>
+        <li class="active , taille"><a href="index.php">Acceuil</a></li>
       </ul>
     </div>
 
@@ -61,35 +33,30 @@
                 <input type="search" class="input-sm form-control" placeholder="Recherche">
                 <button type="submit" class="btn btn-primary btn-sm">
                 <span class="glyphicon glyphicon-eye-open"></span> Chercher</button>
-      </div>
-
-    <div class="col-sm-12 ">
-        <div class="col-sm-10 col-md-10 col-lg-12" >
-          <div class="col-sm 12 col-md-5 col-lg-3">
-        <?=nl2br(htmlspecialchars($image['image']))?>  
-                  height="250px"
-                  width="185px"
-               
-           </div>
-        <div class="col-sm-12 col-md-6 col-lg-9">
-        <?=nl2br(htmlspecialchars($titre['titre']))?>
-        <?=nl2br(htmlspecialchars($menber['id_membre']))?>
-        <?=nl2br(htmlspecialchars($genre['id_genre']))?>
-        </div>
-        <div class="col-sm-12 col-md-7 col-lg-9">
-        <?=nl2br(htmlspecialchars($resu['resum']))?>
-        </div>
-        <hr />
-       </div>
+        </form>
+        
     </div>
+        
 
+          <?php while ($donnees = $Livres->fetch()) {?>
+    <div class="col-sm-10 col-md-10 col-lg-12" >
+          <div class="col-sm-4 col-md-4  col-lg-3 ">
+            <a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"> <img src ="<?=$donnees['image']?>" alt="<?=$donnees['titre']?>" ></a>
+          </div>
+         <div class="col-sm-2  col-md-4 col-lg-8">
+             <p><a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"><?=$donnees['titre']?></a></p>
+             <p><a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"><?=$donnees['pseudo']?></a></p>
+             <p><?=$donnees['libel']?></p>
+         </div>
+         <div class="col-sm-9 col-md-5col-lg-3">
+          <p><?=$donnees['resum']?></p>
+        </div>
+    </div>
+    
+    <?php }?>
 
-
-
-
-
-
-
-<?php $content = ob_get_clean();?>
+    </div>
+    <?php $Livres->closeCursor();
+$content = ob_get_clean();?>
 
 <?php require 'template.php';?>

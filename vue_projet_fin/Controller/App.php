@@ -1,7 +1,7 @@
 <?php
 namespace EG\Controller;
 
-use \EG\controller\Controller;
+use \EG\Controller\Controller;
 
 class App
 {
@@ -14,18 +14,28 @@ class App
 
     public function run()
     {
-        try
-        { // Lien
+        try { // Lien
             //todo si les action son des l'url alors
             if (isset($_GET['action'])) {
-                if ($_GET['action'] == 'inscription') {
+                if ($_GET['action'] == 'getChaps') {
+                    $this->controller->getChaps($_GET['id']);
+                }
+                  elseif ($_GET['action'] == 'inscription') {
                     $this->controller->inscript();
                     //declarée inscipt qui appelle une methode du modelle qui fait un insrt intoo dans le tableau member
                     //qui en redirigée ver la vue
-
                 } elseif ($_GET['action'] == 'addInscription') {
-                    if (!empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['password'])) {
+                    if (!empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['email'])) {
                         $this->controller->addInscription($_POST['pseudo'], $_POST['password'], $_POST['email']);
+                    } else { // Autre exception
+                        throw new Exception('tous les champs ne sont pas remplis !');
+                    }
+                } elseif ($_GET['action'] == 'conexion') {
+                    $this->controller->connect();
+
+                } elseif ($_GET['action'] == 'verifconexion') {
+                    if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
+                        $this->controller->verif($_POST['pseudo'], $_POST['password']);
                     } else { // Autre exception
                         throw new Exception('tous les champs ne sont pas remplis !');
                     }
