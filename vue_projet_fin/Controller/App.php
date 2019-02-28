@@ -19,8 +19,8 @@ class App
             if (isset($_GET['action'])) {
                 if ($_GET['action'] == 'getChaps') {
                     $this->controller->getChaps($_GET['id']);
-                }
-                  elseif ($_GET['action'] == 'inscription') {
+                    
+                } elseif ($_GET['action'] == 'inscription') {
                     $this->controller->inscript();
                     //declarée inscipt qui appelle une methode du modelle qui fait un insrt intoo dans le tableau member
                     //qui en redirigée ver la vue
@@ -39,9 +39,38 @@ class App
                     } else { // Autre exception
                         throw new Exception('tous les champs ne sont pas remplis !');
                     }
-                } else {
-                    $this->controller->getLivres();
+                } elseif ($_GET['action'] == 'conexcompte') {
+                    $this->controller->compte();
+
+                } elseif ($_GET['action'] == 'decocompte') {
+
+                    // On détruit les variables de notre session
+                    session_unset();
+
+                    // On détruit notre session
+                    session_destroy();
+
+                    $this->controller->redirect();
+                } elseif ($_GET['action'] == 'alert') {
+                    // Incrément du nb d'alert sur un commentaire
+                    $this->controller->incrementAlert($_GET);
                 }
+                 elseif ($_GET['action'] == 'addComment') 
+                 {
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        if ( !empty($_POST['content']) && !empty($_POST['id_chapter']) && !empty($_POST['id_membre'])) {
+                            $this->controller->addComment($_GET['id'], $_POST['content'],$_GET['id_chapter'],$_GET['id_membre']);
+                        } else { // Autre exception
+                            throw new Exception('tous les champs ne sont pas remplis !');
+                        }
+                    } else { // Autre exception
+                        throw new Exception(' aucun identifiant de chapitre envoyé');
+                    } 
+                }
+                else {
+                    $this->controller->getLivres();
+            }
+
             }
             ///sinon pas d'action dans l'url
             else {

@@ -1,5 +1,5 @@
-<?php $title = 'second page';?>
-
+<?php $title = 'compte';?>
+ 
 <?php ob_start();?>
 <?php
         if(isset ($_SESSION['pseudo'])){
@@ -8,16 +8,19 @@
 
         } ?>
 
-<?php while ($donnees = $Chapters->fetch()) {?>
+<form action="index.php?action=addInscription" method="post">
 
-    <p><?=$donnees['title']?></p>
-    <p><?=$donnees['number']?></p>
-    <p><?=$donnees['creation_date']?></p>
-    
-<?php }
-
-$Chapters->closeCursor();?>
-
+    <div>
+        <label for="Titre">Titre</label><br />
+        <input type="text" id="Titre" name="Titre" />
+    </div>
+    <div>
+        <label for="resume">resumé</label><br />
+        <input type="text" id="resume" name="resume" />
+    </div>
+    <div>
+        <input type="submit" value="valider" />
+    </div>
 <?php $content = ob_get_clean();?>
 
 <?php require 'template.php';?>

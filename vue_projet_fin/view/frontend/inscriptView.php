@@ -15,16 +15,16 @@
         <input type="text" id="email" name="email" />
     </div>
     <div>
-    <input type="checkbox" id="dropdownCheck">
-    <p>ce souvenir de moi </p>
+        <input type="checkbox" id="dropdownCheck">
+        <p>ce souvenir de moi </p>
     </div>
-    
+
     <div>
-    <input type="submit" value="valider" />
+        <input type="submit" value="valider" />
     </div>
     <div>
-    <a href="index.php">Acceuil</a>
+        <a href="index.php">Acceuil</a>
     </div>
-    
+
     <?php $content = ob_get_clean();?>
-<?php require 'template.php';?>
+    <?php require 'template.php';?>

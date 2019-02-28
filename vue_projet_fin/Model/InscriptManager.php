@@ -1,4 +1,5 @@
 <?php
+
 namespace EG\model;
 
 use EG\Model\Manager;
