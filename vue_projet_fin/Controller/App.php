@@ -17,6 +17,7 @@ class App
         try { // Lien
             //todo si les action son des l'url alors
             if (isset($_GET['action'])) {
+                
                 if ($_GET['action'] == 'getChaps') {
                     $this->controller->getChaps($_GET['id']);
                     
@@ -57,15 +58,14 @@ class App
                 }
                  elseif ($_GET['action'] == 'addComment') 
                  {
-                    if (isset($_GET['id']) && $_GET['id'] > 0) {
-                        if ( !empty($_POST['content']) && !empty($_POST['id_chapter']) && !empty($_POST['id_membre'])) {
-                            $this->controller->addComment($_GET['id'], $_POST['content'],$_GET['id_chapter'],$_GET['id_membre']);
+                    if (isset($_GET['id'])) {
+                        if (!empty($_POST['content'])) {
+                            $this->controller->addComment($_GET['id'], $_GET['id_membre'], $_POST['content']);
                         } else { // Autre exception
                             throw new Exception('tous les champs ne sont pas remplis !');
                         }
-                    } else { // Autre exception
-                        throw new Exception(' aucun identifiant de chapitre envoyé');
-                    } 
+                    }
+
                 }
                 else {
                     $this->controller->getLivres();

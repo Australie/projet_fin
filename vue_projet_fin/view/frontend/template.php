@@ -30,10 +30,16 @@
                         <div class="dropdown-menu ">
                             <button class="dropdown-item" type="button"
                                 onclick="window.location.href='index.php?action=inscription'">s'inscrire </button>
+                                <button class="dropdown-item" type="button"
+                                onclick="window.location.href='index.php?action=conexion'">connexion</button>
+
+                    
                             <button class="dropdown-item" type="button"
                                 onclick="window.location.href='index.php?action=conexcompte'">Mon compte</button>
                             <button class="dropdown-item" type="button"
                                 onclick="window.location.href='index.php?action=decocompte'">Deconexion</button>
+                     
+
                         </div>
                     </div>
                 </ul>

@@ -26,15 +26,15 @@ class controller
         $this->commentManager = new CommentManager();
     }
     
-    public function addComment($Id, $author, $content)
+    public function addComment($id_Livre, $pseudo, $content)
     {
-        $affectedLines = $this->commentManager->postComment($Id, $author, $content);
+        $affectedLines = $this->commentManager->postComment($id_Livre, $pseudo, $content);
 
         if ($affectedLines === false) {
             // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
             throw new Exception('Impossible d\'ajouter le commentaire !');
         } else {
-            header('Location: index.php?action=chapter&id=' . $Id);
+            header('Location: index.php?action=getChaps&id=' . $id_Livre);
         }
     }
     public function inscript()
@@ -42,7 +42,6 @@ class controller
         require 'view/frontend/inscriptView.php';
         //TODO appelle de model et une autre dirige ver la vue
     }
-
     public function addInscription($pseudo, $password, $email)
     {
         //TODO appelle manager d'inscription (creation de compte)
@@ -61,7 +60,6 @@ class controller
         require 'view/frontend/connexionView.php';
         //TODO appelle de model et une autre dirige ver la vue
     }
-
     public function verif($pseudo, $password)
     {
         $req = $this->MemberManager->getMember($pseudo);
@@ -69,6 +67,8 @@ class controller
         if ((password_verify($password, $req['password'])) && ($pseudo == $req['pseudo'])) {
 
             $_SESSION['pseudo'] = $pseudo;
+            $_SESSION['member_id'] = $req['id'];
+            
 
             header('Location: index.php');
         } else {
