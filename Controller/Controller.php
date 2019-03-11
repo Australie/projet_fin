@@ -10,6 +10,8 @@ use \EG\Model\InscriptManager;
 use \EG\Model\LivreManager;
 use \EG\Model\MemberManager;
 use \EG\model\AffichelivreManager;
+use \EG\model\SuppreManager;
+use \EG\model\ModifierManager;
 
 class controller
 {
@@ -21,6 +23,8 @@ class controller
     private $GenreManager;
     private $crealivreManager;
     private $affichelivreManager;
+    private $suppreManager;
+    private $modifierManager;
 
     public function __construct()
     {
@@ -32,9 +36,11 @@ class controller
         $this->GenreManager = new GenreManager();
         $this->crealivreManager = new CrealivreManager();
         $this->affichelivreManager = new AffichelivreManager();
+        $this->suppreManager = new SuppreManager();
+        $this->modifierManager = new ModifierManager();
     }
 
-    //ajoute les commentaire////
+//ajoute les commentaire//
     public function addComment($id_Livre, $pseudo, $content)
     {
         $affectedLines = $this->commentManager->postComment($id_Livre, $pseudo, $content);
@@ -46,7 +52,7 @@ class controller
             header('Location: index.php?action=getChaps&id=' . $id_Livre);
         }
     }
-    ///gere l'incription/////
+//gere l'incription//
     public function inscript()
     {
         require 'view/frontend/inscriptView.php';
@@ -64,7 +70,7 @@ class controller
             header('Location: index.php?action=conexion');
         }
     }
-    /////gere la connection/////
+//gere la connection//
     public function connect()
     {
         require 'view/frontend/connexionView.php';
@@ -85,7 +91,7 @@ class controller
         }
 
     }   
-    //////affiche livre///
+//affiche livre//
     public function getLivres()
     {
 
@@ -95,7 +101,7 @@ class controller
         require 'view/frontend/PrincipalView.php';
         
     }
-    /////affiche chapitre dans livre////
+//affiche chapitre dans livre//
     public function getChaps($id)
     {
         $Chapters = $this->ChapitreViewManager->getChaps($id);
@@ -103,7 +109,7 @@ class controller
 
         require 'view/frontend/chapitreView.php';
     }
-    ////affiche  compte/////
+ ////affiche  compte/////
     public function compte()
     {
         $Livre = $this->affichelivreManager->getLivre();
@@ -111,7 +117,7 @@ class controller
         require 'view/frontend/compteView.php';
         //TODO appelle de model et une autre dirige ver la vue
     }
-    ////redirection////
+//redirection//
     public function redirect()
     {
         header('Location: index.php');
@@ -120,7 +126,13 @@ class controller
     {
         require 'view/frontend/TextLivreView.php';
     }
-    ///pour la creation du livre////
+    public function redirectcrea()
+    {
+        $Genres = $this->GenreManager->getgenre();
+        require 'view/frontend/creation_livreView.php';
+    }
+   
+//pour la creation du livre//
     public function Postcreat( $titre, $resum, $image, $id_genre,$id_membre)
     {
         $comments = $this->crealivreManager->addlivre( $titre, $resum, $image, $id_genre,$id_membre);
@@ -131,28 +143,55 @@ class controller
             header('Location: index.php?action=conexcompte');
         }
     }
-    //////////pour la creation du chapitre//////
+//pour la creation du chapitre//
 
-    //////////pour la creation du text du chapître/////
-    public function redirectcrea()
-    {
-        $Genres = $this->GenreManager->getgenre();
-        require 'view/frontend/creation_livreView.php';
-    }
-   
+//pour la creation du text du chapître//
+
     public function creaText()
     {
         //$Text = $this->GenreManager->();
         require 'view/frontend/creation_livreView.php';
     }
 
-    //////appelle les genres/////
+//appelle les genres//
     public function getgenres()
     {
         require 'view/frontend/creation_livreView.php';
     }
+//supprimer//
+    public function supre($id){
+        //todo// apprelle supprimer commentaire
+        //todo//appelle suprimer chapitre
+        $Suppre = $this->suppreManager->SuppreLivre($id);
+        if ($Suppre === false) {
+            // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
+            throw new Exception('Impossible de supprimer le livre!');
+        } 
+        else {
+            header('Location: index.php?action=conexcompte');
+        }
+    }
+    public function suprecomment($id){
+        $Supprec = $this->suppreManager->Supprecomment($id);
+         if ($Supprec === false) {
+             // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
+            throw new Exception('Impossible de supprimer le commentaire!');
+        } else {
+            header('Location: index.php?action=conexcompte');
+        }
+    }
+    public function supreChapite($id){
+        $SuppreC = $this->suppreManager->supreChapite($id);
+         if ($SuppreC === false) {
+             // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
+            throw new Exception('Impossible de supprimer le commentaire!');
+        } else {
+            header('Location: index.php?action=conexcompte');
+        }
+    }
 
-    public function supre(){
-        $Suppre = $this->SuppreManager->SuppreLivre();
+//modifie//    
+    public function modif(){
+        $modif = $this->modifierManager->ModifLivre();
     }
 }
