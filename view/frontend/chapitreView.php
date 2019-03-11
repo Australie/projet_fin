@@ -16,6 +16,7 @@ echo $_SESSION['pseudo']; ?>
 <p><?=$donnees['title']?></p>
 <p><?=$donnees['number']?></p>
 <p><?=$donnees['creation_date']?></p>
+<a href="index.php?action=supreChapite&id=<?=$donnees["id"]?>">supprimer</a>
 
 
 <?php }?>
@@ -37,6 +38,7 @@ while ($comment = $comments->fetch()) {
 <p><strong><?=htmlspecialchars($comment['pseudo'])?></strong> le <?=htmlspecialchars($comment['creation_date'])?>
 </p>
 <p><?=nl2br(htmlspecialchars($comment['content']))?></p>
+<a href="index.php?action=suprecomment&id=<?=$comment['id']?>">supprimer</a>
 
 <?php
 }

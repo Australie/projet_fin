@@ -2,8 +2,8 @@
 
 <?php ob_start();?>
 <div class=" container col-sm-12 col-md-12 col-lg-12">
-    <img src="img/4.png" alt="gally" width="1700em" height="300em">
-    <div class="bottom-right">
+    <img src="img/4.png" alt="gally" width="100%" height="300em">
+    <div class="bottom-left">
         <?php
 if (isset($_SESSION['pseudo'])) {
 
@@ -25,27 +25,33 @@ if (isset($_SESSION['pseudo'])) {
     </ul>
 
 </div>
+
 <?php while ($donnees = $Livre->fetch()) {?>
 <div class="col-sm-10 col-md-10 col-lg-9">
-    <div class="col-sm-4 col-md-4  col-lg-3 ">
-        <a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"> <img src="img/<?=$donnees['image']?>" alt="<?=$donnees['titre']?>"></a>
-    </div>
-    <div class="col-sm-2  col-md-4 col-lg-8">
-        <p><a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"><?=$donnees['titre']?></a></p>
-        <p><a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"><?=$donnees['pseudo']?></a></p>
-        <p><?=$donnees['libel']?></p>
-    </div>
-    <div class="col-sm-9 col-md-5col-lg-4">
-        <p><?=$donnees['resum']?></p>
-    </div>
-    <div class="col-sm-9 col-md-5col-lg-3">
-    <a href="index.php?action=Supprimer">supprimer</a>
+    <div class="col-sm-10 col-md-10 col-lg-12">
+        <div class="col-sm-4 col-md-4  col-lg-3 ">
+            <a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"> <img src="img/<?=$donnees['image']?>"
+                    alt="<?=$donnees['titre']?>"></a>
+        </div>
+        <div class="col-sm-2  col-md-4 col-lg-8">
+            <h1><a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"><?=$donnees['titre']?></a></h1>
+            <p><a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"><?=$donnees['pseudo']?></a></p>
+            <p><?=$donnees['libel']?></p>
+        </div>
+        <div class="col-sm-9 col-md-5col-lg-4">
+            <p><?=$donnees['resum']?></p>
+        </div>
+        <div class="col-sm-9 col-md-5col-lg-3">
+            <a href="index.php?action=Modifier&id=<?=$donnees["id"]?>">modifier</a>
+            <a href="index.php?action=Supprimer&id=<?=$donnees["id"]?>">supprimer</a>
+        </div>
     </div>
 </div>
 
 <?php }?>
 
+</div>
 <?php $Livre->closeCursor();
- $content = ob_get_clean();?>
+$content = ob_get_clean();?>
 
 <?php require 'template.php';?>
