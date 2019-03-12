@@ -17,7 +17,7 @@ echo $_SESSION['pseudo']; ?>
 <p><?=$donnees['number']?></p>
 <p><?=$donnees['creation_date']?></p>
 <a href="index.php?action=supreChapite&id=<?=$donnees["id"]?>">supprimer</a>
-
+<a href="index.php?action=redirectModifierlivre&id=<?=$donnees["id"]?>">Modifier</a>
 
 
 <?php }?>

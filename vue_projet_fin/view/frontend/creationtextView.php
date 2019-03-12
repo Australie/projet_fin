@@ -1,7 +1,7 @@
 <?php $title = 'book';?>
 <?php ob_start();?>
 
-<form action="index.php?action=creaChaps&id=<?= $id ?>" method="post">
+<form action="index.php?action=creaChaps&id=<?= $idlivre ?>" method="post">
     <div>
         <input type="submit" />
     </div>
