@@ -74,12 +74,12 @@ CREATE TABLE comment(
         creation_date Datetime NOT NULL ,
         content       Text NOT NULL ,
         alert         Int NOT NULL ,
-        id_chapter    Int NOT NULL ,
-        id_membre     Int NOT NULL
+        id_membre     Int NOT NULL ,
+        id_Livre      Int NOT NULL
 	,CONSTRAINT comment_PK PRIMARY KEY (id)
 
-	,CONSTRAINT comment_chapter_FK FOREIGN KEY (id_chapter) REFERENCES chapter(id)
-	,CONSTRAINT comment_membre0_FK FOREIGN KEY (id_membre) REFERENCES membre(id)
+	,CONSTRAINT comment_membre_FK FOREIGN KEY (id_membre) REFERENCES membre(id)
+	,CONSTRAINT comment_Livre0_FK FOREIGN KEY (id_Livre) REFERENCES Livre(id)
 )ENGINE=InnoDB;
 
 

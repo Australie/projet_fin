@@ -8,7 +8,7 @@ class CommentManager extends Manager
     public function getComments($LivreId)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT * FROM comment
+        $comments = $db->prepare('SELECT comment.id,creation_date,content,pseudo,id_Livre FROM comment
         INNER JOIN membre ON comment.id_membre = membre.id
         WHERE id_Livre = ? ');
         $comments->execute(array($LivreId));

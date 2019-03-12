@@ -12,7 +12,7 @@ h1, h2, h3
 }
 .news p
 {
-    background-color:#CCCCCC;
+    background-color:rgb(151, 72, 175);
     margin-top:0px;
 }
 .news
@@ -24,5 +24,9 @@ h1, h2, h3
 a
 {
     text-decoration: none;
-    color: blue;
+    color:rgb(88, 58, 122);
 }
+input, textarea {
+    border: 0;
+    }
+    

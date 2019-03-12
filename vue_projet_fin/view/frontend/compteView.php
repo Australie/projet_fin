@@ -2,53 +2,54 @@
 
 <?php ob_start();?>
 <div class=" container col-sm-12 col-md-12 col-lg-12">
-    <img src="img/4.png" alt="gally" width="1700em" height="300em">
-    <div class="bottom-right">
-    <?php
-        if(isset ($_SESSION['pseudo'])){
-           
-          echo $_SESSION['pseudo'];
+    <img src="img/4.png" alt="gally" width="100%" height="300em">
+    <div class="bottom-left">
+        <?php
+if (isset($_SESSION['pseudo'])) {
 
-        } ?>
+    echo $_SESSION['pseudo'];
+
+}?>
     </div>
 </div>
 <div class="col-sm-3 col-md-3 col-lg-3">
+
     <ul class="nav nav-pills nav-stacked">
-        <li class="active, profile"><a href="#">First </a></li>
+        <li class="active, profile"><a href="index.php?action=creationLivre">crée mon livre</a></li>
         <hr />
 
-        <li class="active, profile"><a href="#">First </a></li>
-        <hr />
-        <li class="active, profile"><a href="#">First </a></li>
-        <hr />
+     
     </ul>
+
 </div>
 
-<div class="col-sm-12 col-md-12 col-lg-9">
-    <p>Mes Livres:</p>
+<?php while ($donnees = $Livre->fetch()) {?>
+<div class="col-sm-10 col-md-10 col-lg-9">
+    <div class="col-sm-10 col-md-10 col-lg-12">
+        <div class="col-sm-4 col-md-4  col-lg-3 ">
+            <a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"> <img src="img/<?=$donnees['image']?>"
+                    alt="<?=$donnees['titre']?>"></a>
+        </div>
+        <div class="col-sm-2  col-md-4 col-lg-8">
+            
+            <a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"><?=$donnees['titre']?></a>
+            <p><?=$donnees['libel']?></p>
+        </div>
+        <div class="col-sm-9 col-md-5col-lg-4">
+            <p><?=$donnees['resum']?></p>
+        </div>
+        <div class="col-sm-9 col-md-5col-lg-3">
+        
+            <a href="index.php?action=redirectModifier&id=<?=$donnees["id"]?>">modifier</a>
+            <a href="index.php?action=Supprimer&id=<?=$donnees["id"]?>">supprimer</a>
+        </div>
+    </div>
 </div>
 
-<!--<form action="index.php?action=addInscription" method="post">
+<?php }?>
 
-    <div>
-        <label for="Titre">Titre</label><br />
-        <input type="text" id="Titre" name="Titre" />
-    </div>
-    <div>
-        <label for="resume">resumé</label><br />
-        <input type="text" id="resume" name="resume" />
-    </div>
-    <div>
-        <label for="image">image</label><br />
-        <input type="file" id="image" name="image" />
-    </div>
-     <div>
-        <label for="genre">genre</label><br />
-        <input type="text" id="genre" name="genre" />
-    </div>
-    <div>
-        <input type="submit" value="valider" />
-    </div> -->
-<?php $content = ob_get_clean();?>
+</div>
+<?php $Livre->closeCursor();
+$content = ob_get_clean();?>
 
 <?php require 'template.php';?>

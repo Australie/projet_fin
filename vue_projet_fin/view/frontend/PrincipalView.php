@@ -6,7 +6,6 @@
         <li class="active , taille"><a href="index.php">Acceuil</a></li>
     </ul>
 </div>
-
 <div class="col-sm-9 col-md-9 col-lg-9">
     <h2>Livre suivie:</h2>
     <hr />
@@ -17,8 +16,8 @@
 <div class="col-sm-3 col-md-3 col-lg-3">
     <ul class="nav nav-pills nav-stacked">
         <h3>abonement</h3>
-   /teto/
-        <li class="active, profile"><a href="#">First </a></li>
+
+        <li class="active, profile"><a href="#">futurement implenter </a></li>
         <hr />
     </ul>
 </div>
@@ -35,7 +34,8 @@
 <?php while ($donnees = $Livres->fetch()) {?>
 <div class="col-sm-10 col-md-10 col-lg-12">
     <div class="col-sm-4 col-md-4  col-lg-3 ">
-        <a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"> <img src="<?=$donnees['image']?>" alt="<?=$donnees['titre']?>"></a>
+        <a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"> <img src="img/<?=$donnees['image']?>"
+                alt="<?=$donnees['titre']?>"></a>
     </div>
     <div class="col-sm-2  col-md-4 col-lg-8">
         <p><a href="index.php?action=getChaps&id=<?=$donnees["id"]?>"><?=$donnees['titre']?></a></p>

@@ -7,6 +7,8 @@
     <title><?=$title?></title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/bootstrap/css/styles.css" />
+
+    <script></script>
 </head>
 
 <body>
@@ -30,15 +32,13 @@
                         <div class="dropdown-menu ">
                             <button class="dropdown-item" type="button"
                                 onclick="window.location.href='index.php?action=inscription'">s'inscrire </button>
-                                <button class="dropdown-item" type="button"
+                            <button class="dropdown-item" type="button"
                                 onclick="window.location.href='index.php?action=conexion'">connexion</button>
 
-                    
                             <button class="dropdown-item" type="button"
-                                onclick="window.location.href='index.php?action=conexcompte'">Mon compte</button>
+                                onclick="window.location.href='index.php?action=conexcompte&id'">Mon compte</button>
                             <button class="dropdown-item" type="button"
                                 onclick="window.location.href='index.php?action=decocompte'">Deconexion</button>
-                     
 
                         </div>
                     </div>
@@ -50,5 +50,9 @@
 </body>
 <script src="assets/bootstrap/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/alert_comment.js"></script>
 
 </html>
+
+<?php if(isset($_Session['member_id'])) { ?>
+<?php }?>
