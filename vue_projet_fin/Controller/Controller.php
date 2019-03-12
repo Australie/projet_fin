@@ -143,20 +143,20 @@ class controller
         }
     }
 //pour la creation du chapitre//
-    //pour la creation du text du chapître//
-
-    public function ViewText()
+    
+    public function ViewText($id)
     {
+        $idlivre = $id;
         require 'view/frontend/creationChapitreView.php';
     }
-    public function creaText($title,$content,$numbre,$id_Livre)
+    public function creaText($title,$content,$id_Livre)
     {
-        $chaps =  $this->creaChapsManager->PostChaps($title,$content,$numbre,$id_Livre);
+        $chaps =  $this->creaChapsManager->PostChaps($title,$content,$id_Livre);
         if ($chaps === false) {
             // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
             throw new Exception('Impossible d\'ajouter le livre!');
         } else {
-            require 'view/frontend/compteView.php';
+            header('Location: index.php?action=conexcompte');
         }
     }
 
@@ -201,7 +201,7 @@ class controller
     }
 
 //modifie//
-
+    //modifier livre
     public function redirectmodif($id)
     {
         $Genres = $this->GenreManager->getgenre();
@@ -210,6 +210,22 @@ class controller
     public function modif($titre, $resum, $image, $id_genre, $id_membre, $id)
     {
         $modif = $this->modiflivreManager->ModifLivre($titre, $resum, $image, $id_genre, $id_membre, $id);
+        if ($modif === false) {
+            // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
+            throw new Exception('Impossible d\'ajouter le livre!');
+        } else {
+            header('Location: index.php?action=conexcompte');
+        }
+    }
+
+    //modifie chapiter//
+    public function redirectmodiflivre($id)
+    {
+        require 'view/frontend/modifChapitreView.php';
+    }
+    public function modifLivre($titre, $content, $id)
+    {
+        $modif = $this->modiflivreManager->ModifTextLivre($titre, $content, $id);
         if ($modif === false) {
             // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
             throw new Exception('Impossible d\'ajouter le livre!');

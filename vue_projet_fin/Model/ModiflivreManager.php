@@ -22,6 +22,21 @@ class ModiflivreManager extends Manager
             ':id' => $id,
            
         ));
+ 
+        return $req;
+    }
+    public function ModifTextLivre($titre,$content,$id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('UPDATE livre 
+        SET titre = (:titre), content = (:content) 
+        WHERE id = (:id)');
+        $req->execute(array(
+            ':titre' => $titre,
+            ':content' => $content,
+            ':id' => $id,
+           
+        ));
 
         return $req;
     }

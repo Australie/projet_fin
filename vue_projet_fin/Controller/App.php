@@ -86,12 +86,12 @@ class App
                 }
 //creation chapitre//                 
                 elseif ($_GET['action'] == 'ViewChaps') {
-                    $this->controller->ViewText();
+                    $this->controller->ViewText($_GET['id']);
 
                 } elseif ($_GET['action'] == 'creaChaps') {
-                    if (!empty($_POST['Titre']) && !empty($_POST['content']) ) {
+                    if (!empty($_POST['titre']) && !empty($_POST['content']) ) {
 
-                        $this->controller->creaText($_POST['Titre'], $_POST['content'], $_POST['number'], $_POST['$id_Livre'] );
+                        $this->controller->creaText($_POST['titre'], $_POST['content'], $_GET['id'] );
                    
 
                 }
@@ -120,10 +120,10 @@ class App
                         throw new Exception('et et nop :p!');
                     }
                 }
-//modifier
+//modifier liver// 
                 elseif ($_GET['action'] == 'redirectModifier') {
                     $this->controller->redirectmodif($_GET['id']);
-                //modifier liver//    
+                   
                 } elseif ($_GET['action'] == 'Modifier') {
                     if (!empty($_SESSION['member_id'])) {
                         if (!empty($_POST['Titre']) && !empty($_POST['resume']) && !empty($_POST['image']) && !empty($_POST['genre']) && !empty($_SESSION['member_id'])) {
@@ -133,11 +133,27 @@ class App
                     } else {
                         throw new Exception('et et nop :p!');
                     }
-                } else {
+
+                } 
+//modifier chapitre et text//                    
+                elseif ($_GET['action'] == 'redirectModifierlivre') {
+                    $this->controller->redirectmodiflivre($_GET['id']);
+
+                } elseif ($_GET['action'] == 'Modifierliver') {
+                    if (!empty($_SESSION['member_id'])) {
+                        if (!empty($_POST['titre']) && !empty($_POST['content'])) {
+                            $this->controller->modifLivre($_POST['titre'], $_POST['content'], $_GET['id']);
+                        } else {
+                            throw new Exception('et et nop :p!');
+                        }
+                    }
+                }
+//sinon//              
+                else {
                     $this->controller->getLivres();
                     $this->controller->getLivre();
                 }
-//
+//sinon//
             }
             //sinon pas d'action dans l'url
             else {
