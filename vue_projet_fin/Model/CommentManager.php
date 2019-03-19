@@ -1,7 +1,7 @@
 <?php
 namespace EG\model;
 
-use EG\model\Manager;
+use \EG\model\Manager;
 
 class CommentManager extends Manager
 {

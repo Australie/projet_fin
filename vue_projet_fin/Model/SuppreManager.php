@@ -2,7 +2,7 @@
 
 namespace EG\model;
 
-use EG\Model\Manager;
+use \EG\Model\Manager;
 
 class SuppreManager extends Manager
 {

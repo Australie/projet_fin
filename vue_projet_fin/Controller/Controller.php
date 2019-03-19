@@ -1,47 +1,28 @@
 <?php
 namespace EG\Controller;
-
-use \EG\Model\AffichelivreManager;
-use \EG\Model\ChapitreViewManager;
-use \EG\Model\CommentManager;
-use \EG\Model\CrealivreManager;
-use \EG\Model\GenreManager;
-use \EG\Model\InscriptManager;
 use \EG\Model\LivreManager;
+use \EG\Model\CommentManager;
 use \EG\Model\MemberManager;
-use \EG\Model\ModiflivreManager;
 use \EG\Model\SuppreManager;
-use \EG\Model\CreaChapsManager;
+use \Exception;
 
-class controller
+class Controller
 {
-    private $LivreManager;
-    private $ChapitreViewManager;
-    private $InscriptManager;
-    private $MemberManager;
+    private $livreManager;
     private $commentManager;
-    private $GenreManager;
-    private $crealivreManager;
-    private $affichelivreManager;
+    private $memberManager;
     private $suppreManager;
-    private $modiflivreManager;
-    private $creaChapsManager;
+
 
     public function __construct()
     {
-        $this->LivreManager = new LivreManager();
-        $this->ChapitreViewManager = new ChapitreViewManager();
-        $this->InscriptManager = new InscriptManager();
-        $this->MemberManager = new MemberManager();
+        $this->livreManager = new LivreManager();
         $this->commentManager = new CommentManager();
-        $this->GenreManager = new GenreManager();
-        $this->crealivreManager = new CrealivreManager();
-        $this->affichelivreManager = new AffichelivreManager();
+        $this->memberManager = new MemberManager();
         $this->suppreManager = new SuppreManager();
-        $this->modiflivreManager = new ModiflivreManager();
-        $this->creaChapsManager = new CreaChapsManager();
-    }
 
+    }
+  
 //ajoute les commentaire//
     public function addComment($id_Livre, $pseudo, $content)
     {
@@ -63,7 +44,7 @@ class controller
     public function addInscription($pseudo, $password, $email)
     {
         //TODO appelle manager d'inscription (creation de compte)
-        $affectedLines = $this->InscriptManager->addMember($pseudo, $password, $email);
+        $affectedLines = $this->memberManager->addMember($pseudo, $password, $email);
 
         if ($affectedLines === false) {
             // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
@@ -80,10 +61,12 @@ class controller
     }
     public function verif($pseudo, $password)
     {
-        $req = $this->MemberManager->getMember($pseudo);
+        $req = $this->memberManager->getMember($pseudo);
+        
 
-        if ((password_verify($password, $req['password'])) && ($pseudo == $req['pseudo'])) {
+        if ((password_verify($password, $req['password'])) && ($pseudo == $req['pseudo'])){
 
+            $_SESSION['role'] = $req['role'];
             $_SESSION['pseudo'] = $pseudo;
             $_SESSION['member_id'] = $req['id'];
 
@@ -93,11 +76,27 @@ class controller
         }
 
     }
+    public static function isAdmin(){
+    
+        if(!empty($_SESSION['role']) && $_SESSION['role'] == 1){
+            return true ;
+
+        } else{
+            return false;
+        }
+
+    }
 //affiche livre//
     public function getLivres()
     {
+        $Genres = $this->livreManager->getgenre();
 
-        $Livres = $this->LivreManager->getLivres();
+        if (isset($_GET['genre'])) {
+            $Livres = $this->livreManager->getLivresWithGenre($_GET['genre']);
+        } else {
+            $Livres = $this->livreManager->getLivres();
+        }
+
         // apppelle metode du modele qui va cherche les livre dans la bdd
 
         require 'view/frontend/PrincipalView.php';
@@ -106,7 +105,8 @@ class controller
 //affiche chapitre dans livre//
     public function getChaps($id)
     {
-        $Chapters = $this->ChapitreViewManager->getChaps($id);
+        $Livre = $this->livreManager->findLivre($id);
+        $Chapters = $this->livreManager->getChaps($id);
         $comments = $this->commentManager->getComments($id);
 
         require 'view/frontend/chapitreView.php';
@@ -114,7 +114,7 @@ class controller
 //affiche  compte//
     public function compte()
     {
-        $Livre = $this->affichelivreManager->getLivre();
+        $Livre = $this->livreManager->getLivre();
 
         require 'view/frontend/compteView.php';
         //TODO appelle de model et une autre dirige ver la vue
@@ -127,14 +127,17 @@ class controller
    
     public function redirectcrea()
     {
-        $Genres = $this->GenreManager->getgenre();
+        $Genres = $this->livreManager->getgenre();
         require 'view/frontend/creation_livreView.php';
     }
-
+    public function redirectText($idChap){
+        $Text = $this->livreManager->gettext($idChap);
+        require 'view/frontend/TextView.php';
+    }
 //pour la creation du livre//
     public function Postcreat($titre, $resum, $image, $id_genre, $id_membre)
     {
-        $comments = $this->crealivreManager->addlivre($titre, $resum, $image, $id_genre, $id_membre);
+        $comments = $this->livreManager->addlivre($titre, $resum, $image, $id_genre, $id_membre);
         if ($comments === false) {
             // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
             throw new Exception('Impossible d\'ajouter le livre!');
@@ -151,7 +154,7 @@ class controller
     }
     public function creaText($title,$content,$id_Livre)
     {
-        $chaps =  $this->creaChapsManager->PostChaps($title,$content,$id_Livre);
+        $chaps =  $this->livreManager->PostChaps($title,$content,$id_Livre);
         if ($chaps === false) {
             // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
             throw new Exception('Impossible d\'ajouter le livre!');
@@ -201,15 +204,15 @@ class controller
     }
 
 //modifie//
-    //modifier livre
+    //modifier livre//
     public function redirectmodif($id)
     {
-        $Genres = $this->GenreManager->getgenre();
+        $Genres = $this->livreManager->getgenre();
         require 'view/frontend/modifLivreView.php';
     }
     public function modif($titre, $resum, $image, $id_genre, $id_membre, $id)
     {
-        $modif = $this->modiflivreManager->ModifLivre($titre, $resum, $image, $id_genre, $id_membre, $id);
+        $modif = $this->livreManager->ModifLivre($titre, $resum, $image, $id_genre, $id_membre, $id);
         if ($modif === false) {
             // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
             throw new Exception('Impossible d\'ajouter le livre!');
@@ -223,9 +226,9 @@ class controller
     {
         require 'view/frontend/modifChapitreView.php';
     }
-    public function modifLivre($titre, $content, $id)
+    public function modifLivre($title, $content, $id)
     {
-        $modif = $this->modiflivreManager->ModifTextLivre($titre, $content, $id);
+        $modif = $this->livreManager->ModifTextLivre($title, $content, $id);
         if ($modif === false) {
             // Erreur gérée. Elle sera remontée jusqu'au bloc try du routeur !
             throw new Exception('Impossible d\'ajouter le livre!');
