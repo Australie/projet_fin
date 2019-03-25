@@ -9,8 +9,7 @@ class ChapitreViewManager extends Manager
     public function getChaps($id)
     {
         $db = $this->dbConnect();
-        $Chapters = $db->prepare('SELECT * FROM chapter 
-        WHERE id_Livre = ?');
+        $Chapters = $db->prepare('SELECT * FROM chapter WHERE id_Livre = ?');
         $Chapters->execute(array($id));
         return $Chapters;
     }

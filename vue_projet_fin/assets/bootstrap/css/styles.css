@@ -4,34 +4,25 @@
 .profile{
     height: 2em;
 }
-h1, h2, h3 {
+h1, h2, h3 
+{
     text-align:center;
     font-size:0.9em;
-   
-    color: rgb(0, 0, 0)
+    margin-bottom:0px;
 }
-.news p{
-    background-color:rgb(151, 72, 175);
+.news p
+{
+    background-color:#CCCCCC;
     margin-top:0px;
 }
-.news{
+.news
+{
     width:70%;
     margin:auto;
 }
-a{
+
+a
+{
     text-decoration: none;
-    color:rgb(188, 133, 250) !important;
-   
-}
-input, textarea {
-    border: 0;
-}
-.padding {
-    padding: 10px !important;
-}
-.centrageText {
-    text-align: center;
-}
-.colorgeneral{
-    background-color: rgb(49, 20, 82) !important;
+    color: blue;
 }
