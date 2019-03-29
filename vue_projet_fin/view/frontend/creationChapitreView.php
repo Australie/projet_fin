@@ -2,7 +2,7 @@
 <?php ob_start();?>
 
 <form action="index.php?action=creaChaps&id=<?= htmlspecialchars($id) ?>" method="post">
-<div class="col-lg-12 col-lg-offset-5" >    
+<div class=" col-lg-4 col-lg-offset-5 " >    
 <div>
         <input type="submit" />
     </div>

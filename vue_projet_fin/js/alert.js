@@ -6,8 +6,8 @@ var misspseudo = document.getElementById('misspseudo');
 var misspassword = document.getElementById('misspassword');
 var missemail = document.getElementById('missemail');
 
-var pseudoValid = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
-var passwordValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})$/;
+var pseudoValid = /^[a-zA-ZéèîïÉÈÎÏ0-9][a-zéèêàçîï0-9]+([-'\s][a-zA-ZéèîïÉÈÎÏ0-9][a-zéèêàçîï0-9]+)?$/;
+var passwordValid =/^[a-zA-ZéèîïÉÈÎÏ0-9][a-zéèêàçîï0-9]+([-'\s][a-zA-ZéèîïÉÈÎÏ0-9][a-zéèêàçîï0-9]+)?$/;
 var emailValid = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 formValid.addEventListener('click', validation);

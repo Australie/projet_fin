@@ -6,7 +6,7 @@ use \EG\Model\Manager;
 
 class SuppreManager extends Manager
 {
-    public function SuppreLivre($id)
+    public function suppreLivre($id)
     {
         $db = $this->dbConnect();
         $suppre = $db->prepare('DELETE FROM livre 
@@ -18,7 +18,7 @@ class SuppreManager extends Manager
         return $suppre;
     }
 
-    public function Supprecomment($id)
+    public function suppreComment($id)
     {
         $db = $this->dbConnect();
         $suppre = $db->prepare('DELETE FROM comment

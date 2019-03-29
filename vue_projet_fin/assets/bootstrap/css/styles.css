@@ -1,28 +1,54 @@
+body{
+    height: auto;
+    width: auto;
+}
 .taille{
     height: 7em;
 }
 .profile{
     height: 2em;
 }
-h1, h2, h3 
-{
+h1, h2, h3 {
     text-align:center;
-    font-size:0.9em;
-    margin-bottom:0px;
+    font-size:0.9em;  
+    color: rgb(0, 0, 0)
 }
-.news p
-{
-    background-color:#CCCCCC;
+.news p{
+    background-color:rgb(151, 72, 175);
     margin-top:0px;
 }
-.news
-{
+.news{
     width:70%;
     margin:auto;
 }
-
-a
-{
+a{
     text-decoration: none;
-    color: blue;
+    color:rgb(73, 83, 221) !important; 
 }
+input, textarea {
+    border: 0;
+}
+.padding {
+    padding: 10px !important;
+}
+.centrageText {
+    text-align: center;
+}
+/**modification couleur**/
+.bordure{
+    border: thick double rgba(19, 19, 19, 0.836) !important;
+}
+.bord{
+    border-left: 6px solid rgba(49, 20, 82, 0.911) !important;
+}
+.background-color{
+    background-color: rgb(199, 187, 211) !important;
+}
+.colorblanc{
+    color: rgba(255, 255, 255, 0.774) !important;
+    background-color: rgba(55, 27, 121, 0.966)!important;
+}
+.colorgeneral{
+    background-color: rgba(55, 27, 121, 0.966)!important;
+}
+/**/
