@@ -1,9 +1,9 @@
 <?php $title = 'Premier page';?>
 <?php ob_start();?>
 <?php while ($donnees = $Text->fetch()) {?>
-<div class="col-sm-12 col-md-12 col-lg-12">
+<div class="">
 
-    <div class="centrageText col-sm-12 col-md-12  col-lg-12">
+    <div class="">
         <p><?=htmlspecialchars($donnees ["content"])?></p>
     </div>
 

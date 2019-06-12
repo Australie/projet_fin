@@ -1,0 +1,738 @@
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+li{
+    list-style: none;
+}
+
+/******
+
+header
+
+*******/
+
+/**placment du header**/
+.place_header{
+    background-color: rgb(110, 50, 250);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*placement du logo*/
+.logo{
+    object-fit: cover;
+    margin: 15px;
+    width: 70%;
+    height: 70px;
+}
+
+/*forme du bouton*/
+.boutonmenuprincipal {
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding:20px;
+    }
+
+/*gestion de la taille*/
+.boutonmenuprincipal img{
+    width: 50px;
+    height: 50px;
+}
+
+/*gestion de la couleur du hover*/
+.boutonmenuprincipal:hover {
+    background-color: #fafafa;
+    }
+
+/*possionement du menu deroulent */
+.dropdown-child {
+    display: none;
+    min-width: 25px;
+    right: 0;
+    position: absolute;
+    background-color: #fafafa;
+    }
+
+/*gestion des parametre apliquer sur les child*/
+.dropdown-child button{
+    color: rgb(10, 7, 7);
+    padding: 20px;
+    width: 100%;
+    text-decoration: none;
+    display: block;
+    }
+
+/**forme d'aparision de child**/
+.dropdown:hover .dropdown-child {
+    display: block;
+    }
+
+
+/********
+
+NAV
+
+*********/
+
+
+/*placement de la nav*/
+.place_nav{
+    width: 24%;
+    position: fixed;
+}
+/*placment des h2*/
+.place_nav h2{
+    border-bottom: solid;
+    text-align: center;
+    font-size: 0.9em;
+    color: rgb(0, 0, 0);
+}
+/*modification couleur a*/
+.place_nav a{
+    color: rgb(73, 83, 221);
+}
+
+/*bouton nav*/
+.nav_boutoon_choix{
+    margin: inherit;
+    padding: 4%;
+    background-color: rgb(110, 50, 250);
+    box-shadow: 2px 2px 10px #999;
+}
+/*modification couleur a*/
+.nav_boutoon_choix a{
+    color: white;
+}
+
+
+
+/*******
+
+MAIN
+
+*******/
+
+
+
+/*placement du contenue*/
+.place_main{
+    max-width: 75%;
+    margin-left: 24%;
+    padding: 20px 2%;
+}
+
+/*placment h2*/
+.place_main h2{
+    font-size: 0.9em;
+    margin-top: 40px;
+    color: rgb(0, 0, 0);
+    border-bottom: solid;
+    text-align: center;
+}
+
+/*modification couleur a*/
+.place_main a{
+    color: rgb(73, 83, 221);
+}
+
+/*personalisasion bouton*/
+.place_bouton{
+    padding:6px 0 6px 0;
+	font:bold 13px Arial;
+    background:rgb(73, 83, 221);
+    box-shadow: 2px 2px 10px #999;
+	color:#fff;
+	border-radius:2px;
+	width:100px;
+	border:none;
+}
+
+
+/*************
+
+    footer
+
+***************/
+
+/*placment du footer*/
+.place_footer{
+    background-color: rgb(56, 22, 150);
+    width: 100%;
+    position: absolute;
+}
+
+/*placment contenue footer*/
+.place_footer p{
+    color: aliceblue;
+    text-align: center;
+}
+
+
+
+/*****************
+
+ZONE LIVRE
+
+******************/
+
+
+/**********************/
+.livre_zone{
+    width: 100%;
+}
+
+/**********************/
+.livre_apart{
+ margin-top: 5%;
+}
+
+/**********************/
+.livre_content{
+    width: 100%;
+    display: flex;
+}
+
+/**********************/
+.livre_image{
+    width: 25%;
+}
+
+/**********************/
+.livre_info{
+    width: 15%;
+}
+
+/**********************/
+.livre_resum{
+    width: 100%;
+}
+
+/**********************/
+.livre_form{
+    width: 205px;
+    height: 250px;
+}
+
+
+
+/********
+
+gestion des formulaire
+
+**********/
+
+.formul_zone{
+    bottom: 50%;
+    left: 45%;
+    position: absolute;
+}
+
+
+/**********************
+
+   COMPTE
+
+**********************/
+
+
+
+/***************/
+.compte_content{
+  display: flex;
+}
+
+/***************/
+.slide{
+    width: 100%;
+}
+
+/**********************/
+.content_slide{
+    max-width: 100%;
+    height: 500px;
+}
+
+/**********************/
+.compte_name{
+ font-size: 20px;
+ font-weight: bolder;
+}
+
+/**********************/
+.compte_slide{
+    width: 100%;
+    height: 100%;
+}
+
+/**********************/
+.compte_nav{
+    width: 20%;
+    padding-right: 5%;
+}
+
+/**********************/
+.cn_perso{
+    padding-top: 5%;
+    padding-bottom: 5%; 
+    border-bottom: solid;
+}
+
+/**********************/
+.compte_zone{
+ display: flex;
+}
+
+/**********************/
+.compte_livre{
+    width: 80%
+}
+
+/**********************/
+.compte_img{
+    width: 15%;
+}
+
+/**********************/
+.compte_info{
+    width: 10%;
+}
+
+/**********************/
+.compte_resum{
+    width: 60%;
+}
+
+/**********************/
+.compte_interact{
+    width: 10%;
+}
+
+/**********************/
+
+
+
+
+/**********************
+
+   RESPONSIVE
+
+**********************/
+
+
+
+
+
+@media all and (max-width: 1624px)
+{
+
+
+
+/*******
+
+MAIN
+
+*******/
+
+
+
+/*placement du contenue*/
+.place_main{
+    max-width: 75%;
+    margin-left: 24%;
+    padding: 20px 2%;
+}     
+/*****************
+
+ZONE LIVRE
+
+******************/
+
+
+.livre_zone{
+    width: 100%;
+}
+
+/**********************/
+.livre_content{
+    width: 100%;
+    display: initial;
+}
+
+/**********************/
+.livre_image{
+    width: 100%;
+}
+
+/**********************/
+.livre_info{
+    width:100%;
+}
+
+/**********************/
+.livre_resum{
+    width: 100%;
+}
+
+/**********************/
+.livre_form{
+    width: 205px;
+    height: 250px;
+}
+
+/**********************
+
+   COMPTE
+
+**********************/
+
+
+
+/***************/
+.compte_content{
+    flex-direction: column;
+}
+/***************/
+.slide{
+    width: 100%;
+}
+  
+/**********************/
+.content_slide{
+    max-width: 100%;
+    height: 400px;
+}
+  
+/**********************/
+.compte_zone{
+   display: flex;
+}
+  
+/**********************/
+.compte_livre{
+    width: 80%
+}
+  
+/**********************/
+.compte_img{
+    width:100%;
+}
+  
+/**********************/
+.compte_info{
+    width:100%;
+}
+  
+/**********************/
+.compte_resum{
+    width:100%;
+}
+  
+/**********************/
+.compte_interact{
+    width:100%;
+}
+  
+/**********************/
+
+}
+
+
+
+/****************************/
+
+
+
+
+@media all and (max-width: 1224px)
+{
+
+
+/*******
+
+MAIN
+
+*******/
+
+
+
+/*placement du contenue*/
+.place_main{
+   max-width: 75%;
+    margin-left: 24%;
+    padding: 20px 2%;
+}
+    
+/*****************
+
+ZONE LIVRE
+
+******************/
+
+
+.livre_zone{
+    width: 100%;
+}
+
+/**********************/
+.livre_content{
+    width: 100%;
+    display: initial;
+}
+
+/**********************/
+.livre_image{
+    width: 100%;
+}
+
+/**********************/
+.livre_info{
+    width:100%;
+}
+
+/**********************/
+.livre_resum{
+    width: 85%;
+}
+
+/**********************/
+.livre_form{
+    width: 205px;
+    height: 250px;
+}
+
+
+/**********************
+
+   COMPTE
+
+**********************/
+
+
+
+/***************/
+.compte_content{
+    flex-direction: column;
+}
+/***************/
+.slide{
+    width: 100%;
+}
+  
+/**********************/
+.content_slide{
+    max-width: 100%;
+    height: 400px;
+}
+  
+/**********************/
+.compte_zone{
+   display: flex;
+}
+  
+/**********************/
+.compte_livre{
+    width: 80%
+}
+  
+/**********************/
+.compte_img{
+    width:100%;
+}
+  
+/**********************/
+.compte_info{
+    width:100%;
+}
+  
+/**********************/
+.compte_resum{
+    width:100%;
+}
+  
+/**********************/
+.compte_interact{
+    width:100%;
+}
+  
+/**********************/
+
+}
+
+
+
+/****************************/
+
+
+
+@media all and (max-width: 800px)
+{
+
+
+ul{
+    padding-inline-start: initial;
+}
+
+
+/***********
+
+MAIN
+
+***********/
+
+/*placement du contenue*/
+.place_main{
+   max-width: 100%;
+    margin-left: 0%;
+    padding: 0%;
+}
+
+.genre_zone{
+    position: relative;
+    left: 15%;
+    width: 80%;
+}
+
+
+/********
+
+NAV
+
+*********/
+
+
+/*placement de la nav*/
+.place_nav{
+    width: 100%;
+    position: initial;
+}
+
+/*bouton nav*/
+.nav_boutoon_choix{
+    margin: inherit;
+    padding: 3%;
+    background-color: rgb(110, 50, 250);
+    box-shadow: 2px 2px 10px #999;
+}
+
+
+/*****************
+
+ZONE LIVRE
+
+******************/
+
+
+.livre_zone{
+    width: 100%;
+}
+
+/**********************/
+.livre_content{
+    width: 100%;
+    display: initial;
+}
+
+/**********************/
+.livre_image{
+    width: 100%;
+}
+
+/**********************/
+.livre_info{
+    width:100%;
+}
+
+/**********************/
+.livre_resum{
+    width: 100%;
+}
+
+/**********************/
+.livre_form{
+    width: 205px;
+    height: 250px;
+}
+
+
+
+/**********************
+
+   COMPTE
+
+**********************/
+
+
+
+/***************/
+.compte_content{
+   flex-direction: column; 
+}
+
+/**********************/
+.content_slide{
+    max-width: 100%;
+    height: 300px;
+}
+  
+/**********************/
+.compte_slide{
+    width: 100%;
+    height: 100%;
+}
+  
+/**********************/
+.compte_nav{
+    width: 100%;
+}
+
+/**********************/
+.compte_zone{
+    flex-direction: column; 
+}
+  
+/**********************/
+.compte_livre{
+    width: 100%
+}
+  
+/**********************/
+.compte_img{
+    width: 100%
+}
+  
+/**********************/
+.compte_info{
+    width: 100%
+}
+  
+/**********************/
+.compte_resum{
+    width: 100%
+}
+  
+/**********************/
+.compte_interact{
+    width: 100%
+}
+  
+/**********************/
+.cn_perso {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+}
+
+
+
+/****************************/
+
+
+
+
+

@@ -91,7 +91,7 @@ class App
                         $resume= htmlspecialchars($_POST['resume']);
                         $image= htmlspecialchars($_POST['image']);
                         $genre= htmlspecialchars($_POST['genre']);
-                        $member_id= htmlspecialchars($_POST['member_id']);
+                        $member_id= htmlspecialchars($_SESSION['member_id']);
                         
                         $this->controller->postCreat( $Titre, $resume, $image, $genre, $member_id);
                     }

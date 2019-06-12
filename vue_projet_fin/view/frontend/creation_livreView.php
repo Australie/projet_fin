@@ -2,7 +2,7 @@
 
 <?php ob_start();?>
 <form action="index.php?action=creaLivre" method="post">
-   <div class="col-lg-4 col-lg-offset-5 " >
+   <div class="formul_zone" >
     <div>
         <label for="Titre">Titre</label><br />
         <input type="text" id="Titre" name="Titre" />

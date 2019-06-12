@@ -2,10 +2,11 @@
 <?php ob_start();?>
 
 <form action="index.php?action=verifconexion" method="post">
-    <div class="grandir col-lg-4 col-lg-offset-5">
+    <div class="formul_zone">
         <div>
             <label for="pseudo"> votre pseudo</label><br />
             <input type="text" id="pseudo" name="pseudo" />
+            
         </div>
         <div>
             <label for="password"> votre motdepasse</label><br />
