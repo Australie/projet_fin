@@ -17,7 +17,7 @@
                     </ul>
             </div>
 </nav>
-<main class="place_main">
+<div class="place_main">
     <section>
         <div class="">      
             <div >
@@ -64,7 +64,7 @@
         </div>
         <div id="page_navigation"></div>
     </section>
-</main>
+</div>
 <footer class="place_footer">
     <p>@ehouarn gargam 2019 </p>   
 </footer>
