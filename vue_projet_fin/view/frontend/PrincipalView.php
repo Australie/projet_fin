@@ -61,8 +61,8 @@
                     </div>
                     <?php }?>
                 </div>
-            <div id="page_navigation"></div>
         </div>
+        <div id="page_navigation"></div>
     </section>
 </main>
 <footer class="place_footer">

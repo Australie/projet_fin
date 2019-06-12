@@ -50,10 +50,16 @@ header
     }
 
 /*possionement du menu deroulent */
+.dropdown{
+    position: relative;
+}
+
+/*possionement du menu deroulent */
 .dropdown-child {
     display: none;
     min-width: 25px;
     right: 0;
+    top: 70%;
     position: absolute;
     background-color: #fafafa;
     }
@@ -152,12 +158,38 @@ MAIN
 	border:none;
 }
 
+/**********************/
+#page_navigation{
+    width: auto;
+    background-color: rgb(110, 50, 250);
+}
+
+/**********************/
+#page_navigation ul{
+    display: flex;
+    width: 30px;
+}
+
+/**********************/
+#page_navigation ul li{
+   margin: 20%;
+}
+
+/**********************/
+#page_navigation ul li a{
+    color: #fafafa;
+}
+
+
+
 
 /*************
 
     footer
 
 ***************/
+
+
 
 /*placment du footer*/
 .place_footer{
@@ -345,7 +377,12 @@ MAIN
     max-width: 75%;
     margin-left: 24%;
     padding: 20px 2%;
-}     
+} 
+
+
+
+
+
 /*****************
 
 ZONE LIVRE
@@ -466,7 +503,8 @@ MAIN
     margin-left: 24%;
     padding: 20px 2%;
 }
-    
+
+
 /*****************
 
 ZONE LIVRE
@@ -590,7 +628,7 @@ MAIN
     margin-left: 0%;
     padding: 0%;
 }
-
+/**************/
 .genre_zone{
     position: relative;
     left: 15%;

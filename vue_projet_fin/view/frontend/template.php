@@ -31,11 +31,10 @@
     <div class="All_content">
         <?=$content?>
 
-</body>
-
+<script src="js/jquery.min.js"></script>
 <script src="js/alert_comment.js"></script>
 <script src="js/liste_contenue.js"></script>
 <script src="js/alert.js"></script>
 <script src="js/slide.js"></script>
-
+</body>
 </html>
