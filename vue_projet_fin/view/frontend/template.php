@@ -28,7 +28,7 @@
                         </ul>
              </div> 
     </header>
-    <div class="All_content">
+    <main class="All_content">
         <?=$content?>
 
 <script src="js/jquery.min.js"></script>

@@ -13,9 +13,7 @@ if (isset($_SESSION['pseudo'])) {
 }?>
     </div>
 </div>
-<section class="compte_zone">
-
-    <div class="compte_nav">
+<div class="compte_nav">
         <ul >
           <li class="cn_perso"><a href="index.php?action=creationLivre">crée mon livre</a></li>
           
@@ -26,10 +24,12 @@ if (isset($_SESSION['pseudo'])) {
           <li class=""><a href="index.php?action=creationLivre">crée mon Manga</a></li>
           -->
         </ul>
-    </div>
+</div>
+<section class="compte_zone">
+
+  
 
     <?php while ($donnees = $Livre->fetch()) {?>
-
     <div class="compte_livre">
         <div class="compte_content">
             <div class="compte_img">
